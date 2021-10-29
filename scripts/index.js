@@ -11,7 +11,7 @@ const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};
 
 var jsonCache = new Map();
 var lastFilterValue = "";
-var lastRaid = "kara";
+var lastRaid = "tk";
 
 function loadJsonAndRender(raidName) {
 	lastRaid = raidName;
