@@ -2,9 +2,9 @@ const GP_KEY = "gp";
 const PRIO_KEY = "prio";
 const WOW_ID_KEY = "wowID";
 const WOW_HEAD_LINK = "https://tbc.wowhead.com/";
-const BASE_REQUEST_LINK = "https://bendriller.github.io/";
-const JSON_REQUEST_MAP = {"sunwell": "KTLOSSunwellLoot.json", "bt": "KTLOSBTLoot.json", "hyjal": "KTLOSHyjalLoot.json", "tk": "KTLOSTKLoot.json", "ssc": "KTLOSSSCLoot.json", "kara": "KTLOSKaraLoot.json", "magth": "KTLOSMagthLoot.json", "gruul": "KTLOSGruulLoot.json", "naxx": "KTLOSNaxxLoot.json", "aq40": "KTLOSAQ40Loot.json", "bwl": "KTLOSBWLLoot.json", "wb":"KTLOSWorldBossLoot.json"};
-const RAID_NAME_MAP = {"sunwell": "Sunwell Plateau", "bt": "Black Temple", "hyjal": "Battle for Mount Hyjal", "tk": "Tempest Keep: The Eye", "ssc": "Serpentshrine Cavern", "kara" : "Karazhan", "magth" : "Magtheridon's Lair", "gruul" : "Gruul's Lair", "naxx" : "Naxxramas", "wb" : "World Boss", "aq40" : "Temple of Ahn'Qiraj", "bwl": "Blackwing Lair"};
+const BASE_REQUEST_LINK = "https://ktlosloots.github.io/";
+const JSON_REQUEST_MAP = {"tk": "TK.json", "ssc": "SSC.json", "mag": "Mag.json", "gruul": "Gruul.json"};
+const RAID_NAME_MAP = {"sunwell": "Sunwell Plateau", "bt": "Black Temple", "hyjal": "Battle for Mount Hyjal", "tk": "Tempest Keep: The Eye", "ssc": "Serpentshrine Cavern", "kara" : "Karazhan", "mag" : "Magtheridon's Lair", "gruul" : "Gruul's Lair", "naxx" : "Naxxramas", "wb" : "World Boss", "aq40" : "Temple of Ahn'Qiraj", "bwl": "Blackwing Lair"};
 const WOWHEAD_JS = "https://wow.zamimg.com/widgets/power.js";
 
 const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};
@@ -63,8 +63,8 @@ function loadGruul() {
 	loadJsonAndRender("gruul");	
 }
 
-function loadMagth() {
-	loadJsonAndRender("magth");	
+function loadMag() {
+	loadJsonAndRender("mag");	
 }
 
 function loadNaxx() {
