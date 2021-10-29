@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- imports js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://wow.zamimg.com/widgets/power.js"></script>
+	<script type="text/javascript" src="scripts/index.js"></script>
+
+	<!-- imports css -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/index.css">
+
+	<base href="">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+
+	<title>Cuzzos Loot Priority</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/Letter-K-gold-icon.png"/>
+	<meta property="og:site_name" content="Cuzzos Loot Prio"/>
+	<meta property="og:type" content="website"/>
+
+</head>
+<body>
+	
+	<div class="wrapper">
+		<div class="navigation">
+			<ul>
+				<li class="tk-loot" onClick="loadTK()">TK</li>
+				<li class="ssc-loot" onClick="loadSSC()">SSC</li>
+				<li class="gruul-loot" onClick="loadGruul()">Gruul</li>
+				<li class="magth-loot" onClick="loadMagth()">Mag</li>
+			</ul>
+		</div>
+		<div class="loot-rules header">
+			Loot priority only applies to the given raid, eg: <b>Snydicate(1) means that Snydicate only has loot priority for that item in raid 1.</b> <br>
+			If Snydicate(1) went to raid 2, that loot priority would be nullified. <br>
+			If no number is listed, assume the prio applies to the raid they attend regularly.
+		</div>
+		<div class="finder header">
+			<div class="input-wrapper">
+			<svg class="search-icon" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onclick="filterBy()"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg> <input id="filter-input" onchange="filterBy()" onblur="filterBy()" autofocus></input>
+			</div>
+		</div>
+		<div id="data-wrapper">
+		</div>
+	</div>
+		
+	</div>
+</body>
+
+</html>
