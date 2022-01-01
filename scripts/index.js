@@ -3,7 +3,7 @@ const PRIO_KEY = "prio";
 const WOW_ID_KEY = "wowID";
 const WOW_HEAD_LINK = "https://tbc.wowhead.com/";
 const BASE_REQUEST_LINK = "https://ktlosloots.github.io/";
-const JSON_REQUEST_MAP = {"tk": "TK.json", "ssc": "SSC.json", "mag": "Mag.json", "gruul": "Gruul.json"};
+const JSON_REQUEST_MAP = {"bt":"BT.json","hyjal":"Hyjal.json","tk": "TK.json", "ssc": "SSC.json", "mag": "Mag.json", "gruul": "Gruul.json"};
 const RAID_NAME_MAP = {"sunwell": "Sunwell Plateau", "bt": "Black Temple", "hyjal": "Battle for Mount Hyjal", "tk": "Tempest Keep: The Eye", "ssc": "Serpentshrine Cavern", "kara" : "Karazhan", "mag" : "Magtheridon's Lair", "gruul" : "Gruul's Lair", "naxx" : "Naxxramas", "wb" : "World Boss", "aq40" : "Temple of Ahn'Qiraj", "bwl": "Blackwing Lair"};
 const WOWHEAD_JS = "https://wow.zamimg.com/widgets/power.js";
 
@@ -11,7 +11,7 @@ const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};
 
 var jsonCache = new Map();
 var lastFilterValue = "";
-var lastRaid = "tk";
+var lastRaid = "bt";
 
 function loadJsonAndRender(raidName) {
 	lastRaid = raidName;
