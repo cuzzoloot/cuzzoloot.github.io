@@ -1,17 +1,18 @@
 const GP_KEY = "gp";
 const PRIO_KEY = "prio";
 const WOW_ID_KEY = "wowID";
+const ALT_ID_KEY = "altID";
 const WOW_HEAD_LINK = "https://tbc.wowhead.com/";
 const BASE_REQUEST_LINK = "https://ktlosloots.github.io/";
-const JSON_REQUEST_MAP = {"bt":"BT.json","hyjal":"Hyjal.json","tk": "TK.json", "ssc": "SSC.json", "mag": "Mag.json", "gruul": "Gruul.json"};
-const RAID_NAME_MAP = {"sunwell": "Sunwell Plateau", "bt": "Black Temple", "hyjal": "Battle for Mount Hyjal", "tk": "Tempest Keep: The Eye", "ssc": "Serpentshrine Cavern", "kara" : "Karazhan", "mag" : "Magtheridon's Lair", "gruul" : "Gruul's Lair", "naxx" : "Naxxramas", "wb" : "World Boss", "aq40" : "Temple of Ahn'Qiraj", "bwl": "Blackwing Lair"};
+const JSON_REQUEST_MAP = {"swp":"SWP.json","bt":"BT.json","hyjal":"Hyjal.json","tk": "TK.json", "ssc": "SSC.json", "mag": "Mag.json", "gruul": "Gruul.json"};
+const RAID_NAME_MAP = {"swp": "Sunwell Plateau", "bt": "Black Temple", "hyjal": "Battle for Mount Hyjal", "tk": "Tempest Keep: The Eye", "ssc": "Serpentshrine Cavern", "kara" : "Karazhan", "mag" : "Magtheridon's Lair", "gruul" : "Gruul's Lair", "naxx" : "Naxxramas", "wb" : "World Boss", "aq40" : "Temple of Ahn'Qiraj", "bwl": "Blackwing Lair"};
 const WOWHEAD_JS = "https://wow.zamimg.com/widgets/power.js";
 
 const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};
 
 var jsonCache = new Map();
 var lastFilterValue = "";
-var lastRaid = "bt";
+var lastRaid = "swp";
 
 function loadJsonAndRender(raidName) {
 	lastRaid = raidName;
@@ -35,8 +36,8 @@ function loadJsonAndRender(raidName) {
 	xhr.send();
 }
 
-function loadSunwell() {
-	loadJsonAndRender("sunwell");
+function loadSWP() {
+	loadJsonAndRender("swp");
 }
 
 function loadBT() {
@@ -163,11 +164,34 @@ function renderTable(dataMap, raidName) {
 			
 			if (dataMap[boss][item][WOW_ID_KEY] != 0) {
 				let wowIdKey = "item=" + dataMap[boss][item][WOW_ID_KEY];
-				let itemAnchor = document.createElement('a');  
-				itemHeader.appendChild(itemAnchor);
-				itemAnchor.href = (WOW_HEAD_LINK + wowIdKey);
-				itemAnchor.setAttribute("data-wowhead", wowIdKey);
-				itemAnchor.innerText = item;
+				if (dataMap[boss][item][ALT_ID_KEY] != undefined) {
+					let altIdKey = "item=" + dataMap[boss][item][ALT_ID_KEY];
+
+					let itemAnchor = document.createElement('a');  
+					let altItemAnchor = document.createElement('a');  
+					let splitter = document.createElement('br');
+					itemHeader.appendChild(itemAnchor);
+					itemHeader.appendChild(splitter);
+					itemHeader.appendChild(altItemAnchor);
+
+					let itemSplit = item.split("/");
+					let firstItem = itemSplit[0];
+					let secondItem = itemSplit[1];
+
+					itemAnchor.href = (WOW_HEAD_LINK + wowIdKey);
+					itemAnchor.setAttribute("data-wowhead", wowIdKey);
+					itemAnchor.innerText = firstItem;	
+
+					altItemAnchor.href = (WOW_HEAD_LINK + altIdKey);
+					altItemAnchor.setAttribute("data-wowhead", altIdKey);
+					altItemAnchor.innerText = secondItem;	
+				} else {
+					let itemAnchor = document.createElement('a');  
+					itemHeader.appendChild(itemAnchor);
+					itemAnchor.href = (WOW_HEAD_LINK + wowIdKey);
+					itemAnchor.setAttribute("data-wowhead", wowIdKey);
+					itemAnchor.innerText = item;
+				}
 			} else {
 				itemHeader.innerText = item;
 			}		
